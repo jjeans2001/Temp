@@ -1,0 +1,480 @@
+<title>Biology Mock Papers</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans+Thai:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+:root{
+  --bg:#f3f5f0; --card:#ffffff; --card2:#e9ede5; --border:#d3dacd; --text:#16211b; --muted:#5d6a61;
+  --accent:#2f6b4f; --accent-ink:#ffffff; --accent-soft:#e1efe7;
+  --violet:#5b3f8c; --violet-bg:#eee8f7;
+  --green:#1d7a45; --green-bg:#e2f4e9; --red:#b8382c; --red-bg:#fbe9e6;
+  --amber:#96590a; --amber-bg:#fbf0dc; --blue:#1f5a91; --blue-bg:#e5eef8;
+  --shadow:0 1px 2px rgba(22,33,27,.06),0 6px 20px rgba(22,33,27,.06);
+  --r:12px;
+  --f-display:"Bricolage Grotesque","IBM Plex Sans Thai",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Thai",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0f1512; --card:#18201c; --card2:#212b26; --border:#2f3b34; --text:#e4ebe6; --muted:#98a69d;
+    --accent:#6fbf93; --accent-ink:#0f1512; --accent-soft:#1f3329;
+    --violet:#b39ae0; --violet-bg:#2a2338;
+    --green:#6fd39a; --green-bg:#16301f; --red:#f08a7e; --red-bg:#3a1c19;
+    --amber:#e8b25c; --amber-bg:#332612; --blue:#8ab8ea; --blue-bg:#18283a;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0f1512; --card:#18201c; --card2:#212b26; --border:#2f3b34; --text:#e4ebe6; --muted:#98a69d;
+  --accent:#6fbf93; --accent-ink:#0f1512; --accent-soft:#1f3329;
+  --violet:#b39ae0; --violet-bg:#2a2338;
+  --green:#6fd39a; --green-bg:#16301f; --red:#f08a7e; --red-bg:#3a1c19;
+  --amber:#e8b25c; --amber-bg:#332612; --blue:#8ab8ea; --blue-bg:#18283a;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.25);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--text);font-family:var(--f-body);font-size:15px;line-height:1.65;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,textarea:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+sub,sup{line-height:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:22px 90px}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid var(--border)}
+.topbar-in{max-width:860px;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.brand-mark{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.02em;white-space:nowrap}
+.brand-mark b{color:var(--accent)}
+.brand-sub{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.back{border:1px solid var(--border);background:var(--card2);border-radius:8px;padding:4px 10px;font-size:13px}
+.counters{display:flex;gap:16px}
+.ctr{text-align:center;min-width:38px}
+.ctr b{display:block;font-family:var(--f-mono);font-size:17px;line-height:1.1;font-variant-numeric:tabular-nums}
+.ctr span{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ctr.ok b{color:var(--green)} .ctr.ng b{color:var(--red)} .ctr.wr b{color:var(--violet)}
+
+/* ---------- home ---------- */
+.hero{padding-block:18px 8px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,6vw,44px);line-height:1.08;letter-spacing:-.025em;margin:6px 0 10px;text-wrap:balance}
+.hero p{color:var(--muted);max-width:62ch;margin:0}
+.subjects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:22px}
+.subj{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;text-align:left;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);transition:transform .15s,border-color .15s}
+.subj:hover{transform:translateY(-2px);border-color:var(--accent)}
+.subj h2{font-family:var(--f-display);font-size:24px;margin:0;letter-spacing:-.015em}
+.subj .code{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.subj ul{margin:0;padding-left:18px;color:var(--muted);font-size:13.5px;line-height:1.55}
+.subj .meta{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font-size:12px;border-radius:999px;padding:2px 10px;background:var(--card2);border:1px solid var(--border)}
+.chip.acc{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.subj .prog-mini{height:4px;background:var(--card2);border-radius:4px;overflow:hidden}
+.subj .prog-mini i{display:block;height:100%;background:var(--accent)}
+.subj .go{font-weight:600;color:var(--accent)}
+.howto{margin-top:26px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px}
+.howto h3{margin:0 0 8px;font-size:15px}
+.howto ol{margin:0;padding-left:20px;color:var(--muted);font-size:14px}
+.note{margin-top:14px;font-size:13px;color:var(--amber);background:var(--amber-bg);border-radius:8px;padding:8px 12px}
+
+/* ---------- exam ---------- */
+.parts{display:flex;gap:6px;background:var(--card2);padding:4px;border-radius:10px;margin-bottom:14px}
+.parts button{flex:1;border:0;background:transparent;border-radius:7px;padding:8px 10px;font-weight:600;font-size:14px;color:var(--muted)}
+.parts button[aria-pressed="true"]{background:var(--card);color:var(--text);box-shadow:var(--shadow)}
+.progress{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:14px}
+.prog-top{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:8px;gap:10px}
+.prog-top b{font-family:var(--f-mono);color:var(--text);font-variant-numeric:tabular-nums}
+.bar{height:5px;background:var(--card2);border-radius:5px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--violet));transition:width .4s}
+.qnav{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.qdot{width:34px;height:34px;border-radius:8px;border:1px solid var(--border);background:var(--card);font-family:var(--f-mono);font-size:12px;font-variant-numeric:tabular-nums;padding:0}
+.qdot.ok{background:var(--green-bg);border-color:var(--green);color:var(--green)}
+.qdot.ng{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+.qdot.seen{background:var(--violet-bg);border-color:var(--violet);color:var(--violet)}
+.qdot.cur{background:var(--text);border-color:var(--text);color:var(--bg)}
+
+.qcard{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);animation:rise .22s ease-out}
+@keyframes rise{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.qcard{animation:none}.bar i{transition:none}}
+.qmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.qnum{font-family:var(--f-mono);font-weight:600;font-size:13px;letter-spacing:.04em}
+.tag{font-size:12px;border-radius:999px;padding:1px 10px;background:var(--blue-bg);color:var(--blue)}
+.diff{font-size:12px;border-radius:999px;padding:1px 10px}
+.diff.d1{background:var(--green-bg);color:var(--green)} .diff.d2{background:var(--amber-bg);color:var(--amber)} .diff.d3{background:var(--red-bg);color:var(--red)}
+.marks{font-size:12px;border-radius:999px;padding:1px 10px;background:var(--violet-bg);color:var(--violet);font-family:var(--f-mono)}
+.qen{font-size:15.5px;margin:0 0 8px}
+.qth{font-size:14px;color:var(--muted);border-left:2px solid var(--border);padding-left:12px;margin:0 0 18px}
+.qen p,.qth p{margin:.3em 0}
+.tbl{overflow-x:auto;margin:10px 0}
+.tbl table{border-collapse:collapse;font-size:13.5px;min-width:280px}
+.tbl th,.tbl td{border:1px solid var(--border);padding:5px 10px;text-align:center;font-variant-numeric:tabular-nums}
+.tbl th{background:var(--card2);font-weight:600}
+.fig{margin:10px 0;overflow-x:auto}
+.fig svg{max-width:100%;height:auto;display:block}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;border:1.5px solid var(--border);background:var(--card);border-radius:10px;padding:10px 14px;transition:border-color .12s,background .12s}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt:disabled{cursor:default}
+.ltr{font-family:var(--f-mono);font-weight:600;min-width:22px;height:22px;border-radius:6px;background:var(--card2);display:inline-grid;place-items:center;font-size:12px;margin-top:1px}
+.opt.correct,.opt.show-correct{border-color:var(--green);background:var(--green-bg)}
+.opt.correct .ltr,.opt.show-correct .ltr{background:var(--green);color:var(--card)}
+.opt.wrong{border-color:var(--red);background:var(--red-bg)}
+.opt.wrong .ltr{background:var(--red);color:var(--card)}
+
+.expbox{margin-top:18px;border-top:1px dashed var(--border);padding-top:16px}
+.exphdr{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-weight:600;border-radius:999px;padding:3px 12px;background:var(--green-bg);color:var(--green);font-size:14px}
+.badge.ng{background:var(--red-bg);color:var(--red)}
+.linkbtn{border:0;background:none;color:var(--accent);font-size:13px;padding:2px 4px;text-decoration:underline;text-underline-offset:3px}
+.stepper{background:var(--card2);border-radius:10px;padding:14px 16px}
+.st-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px}
+.st-head span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.dots{display:flex;gap:5px}
+.sdot{width:8px;height:8px;border-radius:50%;background:var(--border)}
+.sdot.done{background:var(--green)} .sdot.active{background:var(--accent);transform:scale(1.25)}
+.step{padding:4px 0}
+.step+.step{border-top:1px solid var(--border);margin-top:10px;padding-top:12px}
+.slabel{font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.stext{font-size:14.5px}
+.stext p{margin:.35em 0}
+.stext ul{margin:.3em 0;padding-left:20px}
+.key{background:var(--amber-bg);color:var(--amber);border-radius:4px;padding:0 4px;font-weight:600}
+.st-nav{display:flex;justify-content:space-between;align-items:center;margin-top:12px;gap:8px}
+.btn{border:1px solid var(--border);background:var(--card);border-radius:8px;padding:6px 14px;font-size:14px}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.btn:disabled{opacity:.45;cursor:default}
+.st-count{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+.answer-area textarea{width:100%;min-height:150px;resize:vertical;border:1.5px solid var(--border);border-radius:10px;padding:12px;background:var(--card);color:var(--text);font:inherit;font-size:14.5px;line-height:1.6}
+.answer-hint{font-size:12.5px;color:var(--muted);margin:6px 0 12px}
+.model{background:var(--card2);border-radius:10px;padding:14px 16px;margin-top:12px}
+.model h4,.ms h4{margin:0 0 6px;font-size:13px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)}
+.model .stext{font-size:14.5px}
+.ms{margin-top:14px}
+.ms label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin-bottom:6px;background:var(--card);font-size:14px;cursor:pointer}
+.ms label.on{border-color:var(--green);background:var(--green-bg)}
+.ms input{margin-top:4px;accent-color:var(--green)}
+.ms-score{display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-top:8px;flex-wrap:wrap;gap:8px}
+.ms-score b{font-family:var(--f-mono)}
+.tip{margin-top:12px;font-size:13.5px;background:var(--violet-bg);color:var(--violet);border-radius:8px;padding:8px 12px}
+
+.navrow{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:10px}
+.navrow .lbl{font-size:13px;color:var(--muted);text-align:center}
+
+/* ---------- results ---------- */
+.result{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.result h2{font-family:var(--f-display);margin:0 0 4px;font-size:26px}
+.bigscore{display:flex;gap:28px;flex-wrap:wrap;margin:16px 0 18px}
+.bigscore div{min-width:130px}
+.bigscore b{font-family:var(--f-mono);font-size:52px;line-height:1;font-variant-numeric:tabular-nums}
+.bigscore small{font-family:var(--f-mono);font-size:18px;color:var(--muted)}
+.bigscore span{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:6px}
+.tb-row{display:grid;grid-template-columns:minmax(0,1fr) 120px 64px;gap:12px;align-items:center;padding:7px 0;border-top:1px solid var(--border);font-size:14px}
+.tb-row .tbar{height:6px;background:var(--card2);border-radius:6px;overflow:hidden}
+.tb-row .tbar i{display:block;height:100%;background:var(--green)}
+.tb-row .pct{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.res-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+@media (max-width:520px){
+  .qcard{padding:18px}
+  .counters{gap:10px;width:100%;justify-content:space-between}
+  .tb-row{grid-template-columns:minmax(0,1fr) 70px 50px}
+  .bigscore b{font-size:42px}
+}
+</style>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <div class="brand">
+      <button class="back" id="btn-home" hidden>← หน้าแรก</button>
+      <div style="min-width:0">
+        <div class="brand-mark">Bio<b>·</b>Mock</div>
+        <div class="brand-sub" id="brand-sub">IGCSE Biology &amp; Human Biology · ข้อสอบฝึก</div>
+      </div>
+    </div>
+    <div class="counters" id="counters" hidden>
+      <div class="ctr"><b id="h-done">0</b><span>ทำแล้ว</span></div>
+      <div class="ctr ok"><b id="h-corr">0</b><span>ถูก</span></div>
+      <div class="ctr ng"><b id="h-wrong">0</b><span>ผิด</span></div>
+      <div class="ctr wr"><b id="h-wr">0</b><span>อัตนัย</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="app"></main>
+
+<script src="bio.js"></script>
+<script src="hbio.js"></script>
+<script>
+(function(){
+const EX = window.EXAMS || {};
+const ORDER = ['bio','hbio'];
+const LETTERS = ['A','B','C','D'];
+const DIFF = {1:'ง่าย',2:'ปานกลาง',3:'ยาก'};
+const app = document.getElementById('app');
+let S = null;      // current subject key
+let st = null;     // state for subject
+let view = 'home';
+let stepIdx = {};  // stepper position per question
+let showAll = false;
+let resetArm = false;
+
+function load(k){
+  const e = EX[k];
+  const blank = {part:'mcq',cur:0,wcur:0,mcq:e.mcq.map(()=>null),wtext:e.written.map(()=>''),wshow:e.written.map(()=>false),wtick:e.written.map(q=>q.ms.map(()=>false))};
+  try{
+    const raw = localStorage.getItem('biomock:'+k);
+    if(raw){const s=JSON.parse(raw); if(s && s.mcq && s.mcq.length===e.mcq.length && s.wtick && s.wtick.length===e.written.length) return Object.assign(blank,s);}
+  }catch(err){}
+  return blank;
+}
+function save(){ try{localStorage.setItem('biomock:'+S,JSON.stringify(st));}catch(err){} }
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));}
+
+function stats(k, s){
+  const e = EX[k]; s = s || st;
+  const done = s.mcq.filter(a=>a!==null).length;
+  const corr = s.mcq.filter((a,i)=>a!==null && a===e.mcq[i].a).length;
+  const wMax = e.written.reduce((t,q)=>t+q.m,0);
+  const wGot = e.written.reduce((t,q,i)=>t+Math.min(q.m, s.wtick[i].filter(Boolean).length),0);
+  const wSeen = s.wshow.filter(Boolean).length;
+  return {done,corr,wrong:done-corr,wMax,wGot,wSeen};
+}
+
+function header(){
+  const home = view==='home';
+  document.getElementById('btn-home').hidden = home;
+  document.getElementById('counters').hidden = home;
+  document.getElementById('brand-sub').textContent = home ? 'IGCSE Biology & Human Biology · ข้อสอบฝึก' : EX[S].title + ' · ' + EX[S].code;
+  if(home) return;
+  const s = stats(S);
+  document.getElementById('h-done').textContent = s.done;
+  document.getElementById('h-corr').textContent = s.corr;
+  document.getElementById('h-wrong').textContent = s.wrong;
+  document.getElementById('h-wr').textContent = s.wGot+'/'+s.wMax;
+}
+
+/* ---------------- HOME ---------------- */
+function renderHome(){
+  view='home'; header();
+  let cards = ORDER.filter(k=>EX[k]).map(k=>{
+    const e = EX[k]; const s = stats(k, load(k));
+    const pct = Math.round((s.done + s.wSeen)/(e.mcq.length+e.written.length)*100);
+    return `<button class="subj" data-subj="${k}">
+      <div class="code">${esc(e.code)}</div>
+      <h2>${esc(e.title)}</h2>
+      <ul>${e.topics.map(t=>`<li>${esc(t)}</li>`).join('')}</ul>
+      <div class="meta"><span class="chip acc">ปรนัย ${e.mcq.length} ข้อ</span><span class="chip acc">อัตนัย ${e.written.length} ข้อ (${s.wMax} คะแนน)</span></div>
+      <div class="prog-mini" aria-hidden="true"><i style="width:${pct}%"></i></div>
+      <div class="meta"><span class="chip">ทำแล้ว ${s.done}/${e.mcq.length}</span><span class="chip">ถูก ${s.corr}</span><span class="chip">อัตนัย ${s.wGot}/${s.wMax}</span></div>
+      <div class="go">${s.done||s.wSeen?'ทำต่อ →':'เริ่มทำข้อสอบ →'}</div>
+    </button>`;}).join('');
+  app.innerHTML = `
+  <section class="hero">
+    <div class="eyebrow">Mock Examination · Unit 1</div>
+    <h1>ข้อสอบฝึก Biology &amp; Human Biology</h1>
+    <p>สองวิชา วิชาละ 60 ข้อ: ปรนัย 50 ข้อ (ตรวจทันทีพร้อมเฉลยทีละขั้น) และอัตนัย 10 ข้อ (เขียนคำตอบ แล้วเทียบกับ mark scheme) ออกตามหัวข้อและเนื้อหาในเอกสารประกอบการเรียน</p>
+  </section>
+  <section class="subjects">${cards}</section>
+  <section class="howto">
+    <h3>วิธีใช้</h3>
+    <ol>
+      <li><b>ปรนัย:</b> กดเลือกคำตอบได้ครั้งเดียว ระบบบอกถูก/ผิดทันที แล้วเปิดคำอธิบายทีละขั้น (กด "แสดงทุกขั้น" เพื่ออ่านรวดเดียว) ใช้ปุ่ม A–D และลูกศรซ้าย/ขวาบนคีย์บอร์ดได้</li>
+      <li><b>อัตนัย:</b> เขียนคำตอบลงช่อง แล้วกด "ดูเฉลย" จากนั้นติ๊กข้อใน mark scheme ที่คำตอบของเราครอบคลุม เพื่อให้คะแนนตัวเอง (คะแนนไม่เกินคะแนนเต็มของข้อ)</li>
+      <li>ความคืบหน้าเก็บไว้ในเบราว์เซอร์นี้ ปิดแล้วกลับมาทำต่อได้ ล้างได้ที่หน้าสรุปผล</li>
+    </ol>
+    <div class="note">⚠ ข้อสอบและเฉลยชุดนี้จัดทำขึ้นเพื่อการฝึกซ้อม ไม่ใช่ข้อสอบหรือเฉลยทางการ</div>
+  </section>`;
+  app.querySelectorAll('[data-subj]').forEach(b=>b.onclick=()=>openSubject(b.dataset.subj));
+  window.scrollTo(0,0);
+}
+
+function openSubject(k){ S=k; st=load(k); stepIdx={}; view='exam'; renderExam(); window.scrollTo(0,0); }
+
+/* ---------------- EXAM ---------------- */
+function renderExam(){
+  view='exam'; header(); resetArm=false;
+  const e = EX[S]; const isM = st.part==='mcq';
+  const list = isM ? e.mcq : e.written;
+  const cur = isM ? st.cur : st.wcur;
+  const s = stats(S);
+  const doneN = isM ? s.done : s.wSeen;
+  const dots = list.map((q,i)=>{
+    let c='qdot';
+    if(isM){ const a=st.mcq[i]; if(a!==null) c+= a===q.a?' ok':' ng'; }
+    else if(st.wshow[i]) c+=' seen';
+    if(i===cur) c+=' cur';
+    return `<button class="${c}" data-go="${i}" aria-label="ข้อ ${isM?i+1:'W'+(i+1)}">${isM?i+1:'W'+(i+1)}</button>`;
+  }).join('');
+  app.innerHTML = `
+  <div class="parts" role="group" aria-label="เลือกตอน">
+    <button data-part="mcq" aria-pressed="${isM}">ตอนที่ 1 · ปรนัย ${e.mcq.length} ข้อ</button>
+    <button data-part="wr" aria-pressed="${!isM}">ตอนที่ 2 · อัตนัย ${e.written.length} ข้อ</button>
+  </div>
+  <div class="progress">
+    <div class="prog-top"><span>${esc(e.title)} · ${isM?'ปรนัย':'อัตนัย'}</span><b>${doneN}/${list.length}</b></div>
+    <div class="bar"><i style="width:${doneN/list.length*100}%"></i></div>
+  </div>
+  <nav class="qnav" aria-label="เลขข้อ">${dots}</nav>
+  <div id="qarea">${isM ? mcqCard(e.mcq[cur],cur) : wrCard(e.written[cur],cur)}</div>
+  <div class="navrow">
+    <button class="btn" id="prev" ${cur===0?'disabled':''}>← ก่อนหน้า</button>
+    <div class="lbl">${isM?'ข้อ':'ข้อ W'}${cur+1} จาก ${list.length}</div>
+    <button class="btn pri" id="next">${cur===list.length-1 ? (isM?'ไปตอนที่ 2 →':'ดูผลสรุป →') : 'ถัดไป →'}</button>
+  </div>`;
+  app.querySelectorAll('[data-part]').forEach(b=>b.onclick=()=>{st.part=b.dataset.part==='mcq'?'mcq':'wr';save();renderExam();});
+  app.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(+b.dataset.go));
+  document.getElementById('prev').onclick=()=>go(cur-1);
+  document.getElementById('next').onclick=()=>{
+    if(cur<list.length-1) go(cur+1);
+    else if(isM){st.part='wr';st.wcur=0;save();renderExam();window.scrollTo(0,0);}
+    else renderResult();
+  };
+  bindCard();
+}
+function go(i){
+  const e=EX[S]; const isM=st.part==='mcq'; const n=(isM?e.mcq:e.written).length;
+  if(i<0||i>=n) return;
+  if(isM) st.cur=i; else st.wcur=i;
+  save(); renderExam();
+  const q=document.getElementById('qarea'); if(q && q.getBoundingClientRect().top<60) q.scrollIntoView({block:'start'});
+}
+
+function qHead(q,label){
+  return `<div class="qmeta"><span class="qnum">${label}</span><span class="tag">${esc(q.t)}</span>${q.d?`<span class="diff d${q.d}">${DIFF[q.d]}</span>`:''}${q.m?`<span class="marks">[${q.m} คะแนน]</span>`:''}</div>
+  <div class="qen">${q.q}</div>${q.th?`<div class="qth">${q.th}</div>`:''}`;
+}
+
+function mcqCard(q,i){
+  const a = st.mcq[i];
+  const opts = q.o.map((o,j)=>{
+    let c='opt';
+    if(a!==null){ if(j===a) c+= j===q.a?' correct':' wrong'; else if(j===q.a) c+=' show-correct'; }
+    return `<button class="${c}" data-pick="${j}" ${a!==null?'disabled':''}><span class="ltr">${LETTERS[j]}</span><span>${o}</span></button>`;
+  }).join('');
+  let exp='';
+  if(a!==null){
+    const ok = a===q.a;
+    exp = `<div class="expbox">
+      <div class="exphdr"><span class="badge ${ok?'':'ng'}">${ok?'✓ ถูกต้อง':'✗ ยังไม่ถูก'} · คำตอบ ${LETTERS[q.a]}</span>
+      <button class="linkbtn" id="toggle-all">${showAll?'ดูทีละขั้น':'แสดงทุกขั้น'}</button></div>
+      ${stepper(q.s,'m'+i)}
+    </div>`;
+  }
+  return `<article class="qcard">${qHead(q,'Q'+(i+1))}<div class="opts">${opts}</div>${exp}</article>`;
+}
+
+function stepper(steps,id){
+  const n=steps.length;
+  if(showAll){
+    return `<div class="stepper"><div class="st-head"><span>อธิบายทีละขั้น</span></div>${steps.map(s=>`<div class="step"><div class="slabel">${s[0]}</div><div class="stext">${s[1]}</div></div>`).join('')}</div>`;
+  }
+  const k = Math.min(stepIdx[id]||0, n-1);
+  const dots = steps.map((_,j)=>`<i class="sdot ${j<k?'done':''} ${j===k?'active':''}"></i>`).join('');
+  return `<div class="stepper" data-step="${id}">
+    <div class="st-head"><span>อธิบายทีละขั้น</span><div class="dots">${dots}</div></div>
+    <div class="step"><div class="slabel">${steps[k][0]}</div><div class="stext">${steps[k][1]}</div></div>
+    <div class="st-nav"><button class="btn" data-sn="-1" ${k===0?'disabled':''}>← ก่อนหน้า</button><span class="st-count">${k+1}/${n}</span>
+    <button class="btn ${k<n-1?'pri':''}" data-sn="1" ${k===n-1?'disabled':''}>${k===n-1?'✓ จบแล้ว':'ถัดไป →'}</button></div>
+  </div>`;
+}
+
+function wrCard(q,i){
+  const shown = st.wshow[i];
+  let body = `<div class="answer-area">
+    <label for="ans-${S}-${i}" class="answer-hint">คำตอบของคุณ (แนะนำให้เขียนเป็นประโยคเต็ม ภาษาอังกฤษหรือไทยก็ได้)</label>
+    <textarea id="ans-${S}-${i}" placeholder="เขียนคำตอบที่นี่…">${esc(st.wtext[i])}</textarea>
+  </div>`;
+  if(!shown){
+    body += `<button class="btn pri" id="reveal">ดูเฉลยและ mark scheme</button>`;
+  } else {
+    const got = Math.min(q.m, st.wtick[i].filter(Boolean).length);
+    body += `<div class="model"><h4>ตัวอย่างคำตอบ (Model answer)</h4><div class="stext">${q.ans}</div></div>
+    <div class="ms"><h4>Mark scheme · ติ๊กข้อที่คำตอบของคุณมี (ข้อละ 1 คะแนน สูงสุด ${q.m})</h4>
+      ${q.ms.map((p,j)=>`<label class="${st.wtick[i][j]?'on':''}"><input type="checkbox" data-tick="${j}" ${st.wtick[i][j]?'checked':''}><span>${p}</span></label>`).join('')}
+      <div class="ms-score"><span>คะแนนที่ได้ข้อนี้</span><b>${got} / ${q.m}</b></div>
+    </div>
+    ${q.tip?`<div class="tip">💡 ${q.tip}</div>`:''}
+    ${q.s?`<div style="margin-top:14px">${stepper(q.s,'w'+i)}</div>`:''}`;
+  }
+  return `<article class="qcard">${qHead(q,'W'+(i+1))}${body}</article>`;
+}
+
+function bindCard(){
+  const isM = st.part==='mcq'; const i = isM?st.cur:st.wcur;
+  app.querySelectorAll('[data-pick]').forEach(b=>b.onclick=()=>pick(+b.dataset.pick));
+  app.querySelectorAll('[data-sn]').forEach(b=>b.onclick=()=>{
+    const id=b.closest('[data-step]').dataset.step; stepIdx[id]=(stepIdx[id]||0)+(+b.dataset.sn); refreshCard();
+  });
+  const ta = app.querySelector('textarea');
+  if(ta) ta.oninput=()=>{st.wtext[i]=ta.value;save();};
+  const rv = document.getElementById('reveal');
+  if(rv) rv.onclick=()=>{st.wshow[i]=true;save();renderExam();};
+  app.querySelectorAll('[data-tick]').forEach(c=>c.onchange=()=>{st.wtick[i][+c.dataset.tick]=c.checked;save();refreshCard();header();});
+  const ta2 = document.getElementById('toggle-all');
+  if(ta2) ta2.onclick=()=>{showAll=!showAll;refreshCard();};
+}
+function refreshCard(){
+  const e=EX[S]; const isM=st.part==='mcq';
+  const q=document.getElementById('qarea');
+  const ta=q.querySelector('textarea'); const val=ta?ta.value:null;
+  q.innerHTML = isM ? mcqCard(e.mcq[st.cur],st.cur) : wrCard(e.written[st.wcur],st.wcur);
+  const card=q.querySelector('.qcard'); if(card) card.style.animation='none';
+  bindCard();
+}
+function pick(j){
+  const i=st.cur; if(st.mcq[i]!==null) return;
+  st.mcq[i]=j; save(); renderExam();
+}
+
+/* ---------------- RESULT ---------------- */
+function renderResult(){
+  view='result'; header();
+  const e=EX[S]; const s=stats(S);
+  const topics={};
+  e.mcq.forEach((q,i)=>{const t=topics[q.t]||(topics[q.t]={n:0,c:0,d:0}); t.n++; if(st.mcq[i]!==null){t.d++; if(st.mcq[i]===q.a) t.c++;}});
+  const pct = Math.round(s.corr/e.mcq.length*100);
+  const total = s.corr + s.wGot, totalMax = e.mcq.length + s.wMax;
+  const msg = pct>=80?'ยอดเยี่ยม! พร้อมสอบจริงแล้ว':pct>=60?'ดีมาก ทบทวนหัวข้อที่ยังพลาดอีกนิด':pct>=40?'ผ่านเกณฑ์ ควรกลับไปอ่านคำอธิบายข้อที่ผิด':'ค่อย ๆ ทบทวนทีละหัวข้อ แล้วลองทำใหม่อีกรอบ';
+  app.innerHTML = `<section class="result">
+    <div class="eyebrow">${esc(e.code)}</div>
+    <h2>สรุปผล · ${esc(e.title)}</h2>
+    <div style="color:var(--muted)">${msg}</div>
+    <div class="bigscore">
+      <div><b>${s.corr}</b><small>/${e.mcq.length}</small><span>ปรนัย (ทำแล้ว ${s.done})</span></div>
+      <div><b>${s.wGot}</b><small>/${s.wMax}</small><span>อัตนัย (ให้คะแนนตัวเอง)</span></div>
+      <div><b>${Math.round(total/totalMax*100)}%</b><span>รวม ${total}/${totalMax}</span></div>
+    </div>
+    <h3 style="margin:8px 0 4px;font-size:15px">ผลปรนัยแยกตามหัวข้อ</h3>
+    ${Object.entries(topics).map(([t,v])=>`<div class="tb-row"><span>${esc(t)} <span style="color:var(--muted);font-size:12px">(${v.c}/${v.n})</span></span><div class="tbar"><i style="width:${v.c/v.n*100}%"></i></div><span class="pct">${Math.round(v.c/v.n*100)}%</span></div>`).join('')}
+    <div class="res-actions">
+      <button class="btn pri" id="r-wrong">ทบทวนข้อที่ผิด</button>
+      <button class="btn" id="r-back">กลับไปที่ข้อสอบ</button>
+      <button class="btn" id="r-reset">ล้างคำตอบวิชานี้</button>
+    </div>
+  </section>`;
+  document.getElementById('r-back').onclick=()=>renderExam();
+  document.getElementById('r-wrong').onclick=()=>{
+    const k=st.mcq.findIndex((a,i)=>a!==null&&a!==e.mcq[i].a);
+    st.part='mcq'; if(k>=0) st.cur=k; save(); renderExam(); window.scrollTo(0,0);
+  };
+  const rb=document.getElementById('r-reset');
+  rb.onclick=()=>{
+    if(!resetArm){resetArm=true;rb.textContent='กดอีกครั้งเพื่อยืนยันการล้าง';rb.style.borderColor='var(--red)';rb.style.color='var(--red)';return;}
+    try{localStorage.removeItem('biomock:'+S);}catch(err){}
+    st=load(S); st.cur=0; st.wcur=0; st.part='mcq'; stepIdx={}; renderExam(); window.scrollTo(0,0);
+  };
+  window.scrollTo(0,0);
+}
+
+document.getElementById('btn-home').onclick=renderHome;
+document.addEventListener('keydown',ev=>{
+  if(view!=='exam') return;
+  const tg=ev.target.tagName; if(tg==='TEXTAREA'||tg==='INPUT') return;
+  const isM=st.part==='mcq'; const cur=isM?st.cur:st.wcur;
+  if(ev.key==='ArrowRight') go(cur+1);
+  else if(ev.key==='ArrowLeft') go(cur-1);
+  else if(isM){const k='abcd'.indexOf(ev.key.toLowerCase()); if(k>=0) pick(k);}
+});
+renderHome();
+})();
+</script>
